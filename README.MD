@@ -3,7 +3,7 @@
 I have created this repo as a reference for creating a testable 
 Jenkins Pipeline Library. With minor exception, this is just shows
 how to put together various off-the-shelf tools to make them work.
-The main unique bit here is the `CPUUtils` tool.
+The main unique bit here is the `CPSUtils` tool.
 
 NOTE: I created this for public discussion as it seems to be hard
 to find decent reference for doing this right. This is not very polished,
@@ -34,8 +34,10 @@ This repo sample includes:
 
 * Code Coverage is unreliable for CPS Code
 * Does not currently include existing Jenkins Pipeline testing frameworks
-  like `JenkinsSpock` or `JenkinsPipelineUnit` - main thing that prevents
-  use of those is that they may or may not handle CPS code well. 
+  like [JenkinsSpock](https://github.com/ExpediaGroup/jenkins-spock) or 
+  [JenkinsPipelineUnit](https://github.com/jenkinsci/JenkinsPipelineUnit) -
+  main thing that prevents use of those is that they may or may not handle 
+  CPS code well. 
 * Does not currently include any proper pre-made mocking for Jenkins steps
 
 ## How To Use
