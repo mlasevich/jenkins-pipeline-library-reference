@@ -1,0 +1,2 @@
+rootProject.name = 'jenkins-pipeline-library-reference'
+startParameter.continueOnFailure = true
