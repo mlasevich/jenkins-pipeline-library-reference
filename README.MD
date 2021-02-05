@@ -1,7 +1,7 @@
 # Jenkins Pipeline Library - Reference Repo
 
 I have created this repo as a reference for creating a testable 
-Jenkins Pipeline Library. With minor exception, this is just shows
+Jenkins Pipeline Library. With minor exception, this just shows
 how to put together various off-the-shelf tools to make them work.
 The main unique bit here is the `CPSUtils` tool.
 
@@ -49,11 +49,11 @@ You can simply run a gradle `check` target like this:
     ./gradlew check
 
 Personally, I like to just leave it running as I edit things with the `-t`
-option, like this
+option, like this:
 
     ./gradlew -t check
 
-And now gradle will re-run check every time as file is modified
+And now gradle will re-run check every time as file is modified.
 
 ### Reports
 
