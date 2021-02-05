@@ -23,12 +23,7 @@ class myVarSpec extends CPSSpecification {
   @ConfineMetaClassChanges([ClassWithSteps])
   def "myVar.sendError() Test"() {
     given: 'a controlled instance of ClassWithSteps'
-      ClassWithSteps mockedClassWithSteps = GroovySpy()
-
-      // Use our instance when one is requested
-      GroovySpy(ClassWithSteps, global: true) {
-        new ClassWithSteps() >> mockedClassWithSteps
-      }
+      ClassWithSteps classWithSteps = GroovySpy(global: true)
 
     when: 'we send error'
       asCPSScript '''
@@ -36,9 +31,9 @@ class myVarSpec extends CPSSpecification {
       '''
 
     then: 'we call our mocked error'
-      1 * mockedClassWithSteps.error('My Error')
+      1 * classWithSteps.error('My Error')
 
-    then: 'we call echo '
-      1 * mockedClassWithSteps.echo('ERROR: My Error') >> null
+    and: 'we call echo, without actually executing it'
+      1 * classWithSteps.echo('ERROR: My Error') >> null
   }
 }
