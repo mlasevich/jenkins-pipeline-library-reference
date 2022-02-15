@@ -22,6 +22,9 @@ class CPSUtils {
    */
   static final SKIP_METHODS = ['getClass', 'getMetaClass']
 
+  static {
+    CpsCallableInvocation.registerMismatchHandler(CPSMismatchHandler.&handleMismatch)
+  }
   /**
    * Invoke method on CPS Transformed object.
    *
