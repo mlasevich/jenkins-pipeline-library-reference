@@ -6,10 +6,8 @@ class CPSNonCPSTestClass {
 
   @NonCPS
   boolean nonCpsMethodCallingCpsMethod() {
-    boolean ret = false
     println "this is a non cps method"
-    ret = cpsMethod()
-    return ret
+    return cpsMethod()
   }
 
   /**
@@ -18,9 +16,8 @@ class CPSNonCPSTestClass {
    * @return
    */
   boolean cpsMethodCallingNonCpsCallingCps() {
-    boolean ret = false
     println "this is a cps method calling non cps method"
-    nonCpsMethodCallingCpsMethod()
+    boolean ret = nonCpsMethodCallingCpsMethod()
     println "after:this is a cps method calling non cps method"
     return ret
   }
