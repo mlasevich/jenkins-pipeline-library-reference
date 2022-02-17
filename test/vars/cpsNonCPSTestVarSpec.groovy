@@ -1,15 +1,17 @@
 @java.lang.SuppressWarnings('UnusedImport')
-import cpsNonCPSTestVar //This import seems to be required for vars
-
-
 import com.cloudbees.groovy.cps.impl.CpsCallableInvocation
+
+@java.lang.SuppressWarnings('UnusedImport')
+//This import seems to be required for vars
+import cpsNonCPSTestVar
+
 import support.jenkins.CPSSpecification
 
-class cpsNonCPSTestVarSpec extends CPSSpecification{
+class cpsNonCPSTestVarSpec extends CPSSpecification {
 
   Class testSubjectClass = cpsNonCPSTestVar
 
-  def "CPSNonCPSTestVar.nonCpsMethod() Test"(){
+  def 'CPSNonCPSTestVar.nonCpsMethod() Test'() {
 
     when: 'we call the method'
       def itWorks = sut.nonCpsMethod()
@@ -18,7 +20,7 @@ class cpsNonCPSTestVarSpec extends CPSSpecification{
       itWorks
   }
 
-  def "CPSNonCPSTestVar.cpsMethod() from NonCPS Test"(){
+  def 'CPSNonCPSTestVar.cpsMethod() from NonCPS Test'() {
 
     when: 'we call method directly'
       def itWorks = sut.cpsMethod()
@@ -27,10 +29,10 @@ class cpsNonCPSTestVarSpec extends CPSSpecification{
       thrown CpsCallableInvocation
 
     and: 'it does not work'
-      ! itWorks
+      !itWorks
   }
 
-  def "CPSNonCPSTestVar.cpsMethod() from CPS Test"(){
+  def 'CPSNonCPSTestVar.cpsMethod() from CPS Test'() {
 
     when: 'we call method via invokeCPSMethod'
       def itWorks = invokeCPSMethod(sut, 'cpsMethod')
@@ -39,7 +41,7 @@ class cpsNonCPSTestVarSpec extends CPSSpecification{
       itWorks
   }
 
-  def "CPSNonCPSTestVar.cpsMethodCallingNonCps() from NonCPS Test"(){
+  def 'CPSNonCPSTestVar.cpsMethodCallingNonCps() from NonCPS Test'() {
 
     when: 'we call method directly'
       def itWorks = sut.cpsMethodCallingNonCps()
@@ -48,10 +50,10 @@ class cpsNonCPSTestVarSpec extends CPSSpecification{
       thrown CpsCallableInvocation
 
     and: 'it does not work'
-      ! itWorks
+      !itWorks
   }
 
-  def "CPSNonCPSTestVar.cpsMethodCallingNonCps() from CPS Test"(){
+  def 'CPSNonCPSTestVar.cpsMethodCallingNonCps() from CPS Test'() {
 
     when: 'we call method via invokeCPSMethod'
       def itWorks = invokeCPSMethod(sut, 'cpsMethodCallingNonCps')
@@ -60,8 +62,7 @@ class cpsNonCPSTestVarSpec extends CPSSpecification{
       itWorks
   }
 
-
-  def "CPSNonCPSTestVar.cpsMethodCallingNonCpsCallingCps() from NonCPS Test"(){
+  def 'CPSNonCPSTestVar.cpsMethodCallingNonCpsCallingCps() from NonCPS Test'() {
 
     when: 'we call method directly'
       def itWorks = sut.cpsMethodCallingNonCpsCallingCps()
@@ -70,10 +71,10 @@ class cpsNonCPSTestVarSpec extends CPSSpecification{
       thrown CpsCallableInvocation
 
     and: 'it does not work'
-      ! itWorks
+      !itWorks
   }
 
-  def "CPSNonCPSTestVar.cpsMethodCallingNonCpsCallingCps() from CPS Test"(){
+  def 'CPSNonCPSTestVar.cpsMethodCallingNonCpsCallingCps() from CPS Test'() {
 
     when: 'we call method via invokeCPSMethod'
       def itWorks = invokeCPSMethod(sut, 'cpsMethodCallingNonCpsCallingCps')
@@ -82,6 +83,6 @@ class cpsNonCPSTestVarSpec extends CPSSpecification{
       thrown IllegalStateException
 
     and: 'it does not work'
-      ! itWorks
+      !itWorks
   }
 }

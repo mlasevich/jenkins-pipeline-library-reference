@@ -3,11 +3,11 @@ package com.legrig
 import com.cloudbees.groovy.cps.impl.CpsCallableInvocation
 import support.jenkins.CPSSpecification
 
-class CPSNonCPSTestScriptSpec extends CPSSpecification{
+class CPSNonCPSTestScriptSpec extends CPSSpecification {
 
   Class testSubjectClass = CPSNonCPSTestScript
 
-  def "CPSNonCPSTestScript.nonCpsMethod() Test"(){
+  def 'CPSNonCPSTestScript.nonCpsMethod() Test'() {
 
     when: 'we call the method'
       def itWorks = sut.nonCpsMethod()
@@ -16,7 +16,7 @@ class CPSNonCPSTestScriptSpec extends CPSSpecification{
       itWorks
   }
 
-  def "CPSNonCPSTestScript.cpsMethod() from NonCPS Test"(){
+  def 'CPSNonCPSTestScript.cpsMethod() from NonCPS Test'() {
 
     when: 'we call method directly'
       def itWorks = sut.cpsMethod()
@@ -24,10 +24,10 @@ class CPSNonCPSTestScriptSpec extends CPSSpecification{
     then: 'we get an exception'
       thrown CpsCallableInvocation
     and: 'it does not work'
-      ! itWorks
+      !itWorks
   }
 
-  def "CPSNonCPSTestScript.cpsMethod() from CPS Test"(){
+  def 'CPSNonCPSTestScript.cpsMethod() from CPS Test'() {
 
     when: 'we call method via invokeCPSMethod'
       def itWorks = invokeCPSMethod(sut, 'cpsMethod')
@@ -36,7 +36,7 @@ class CPSNonCPSTestScriptSpec extends CPSSpecification{
       itWorks
   }
 
-  def "CPSNonCPSTestScript.cpsMethodCallingNonCps() from NonCPS Test"(){
+  def 'CPSNonCPSTestScript.cpsMethodCallingNonCps() from NonCPS Test'() {
 
     when: 'we call method directly'
       def itWorks = sut.cpsMethodCallingNonCps()
@@ -45,10 +45,10 @@ class CPSNonCPSTestScriptSpec extends CPSSpecification{
       thrown CpsCallableInvocation
 
     and: 'it does not work'
-      ! itWorks
+      !itWorks
   }
 
-  def "CPSNonCPSTestScript.cpsMethodCallingNonCps() from CPS Test"(){
+  def 'CPSNonCPSTestScript.cpsMethodCallingNonCps() from CPS Test'() {
 
     when: 'we call method via invokeCPSMethod'
       def itWorks = invokeCPSMethod(sut, 'cpsMethodCallingNonCps')
@@ -57,8 +57,7 @@ class CPSNonCPSTestScriptSpec extends CPSSpecification{
       itWorks
   }
 
-
-  def "CPSNonCPSTestScript.cpsMethodCallingNonCpsCallingCps() from NonCPS Test"(){
+  def 'CPSNonCPSTestScript.cpsMethodCallingNonCpsCallingCps() from NonCPS Test'() {
 
     when: 'we call method directly'
       def itWorks = sut.cpsMethodCallingNonCpsCallingCps()
@@ -67,10 +66,10 @@ class CPSNonCPSTestScriptSpec extends CPSSpecification{
       thrown CpsCallableInvocation
 
     and: 'it does not work'
-      ! itWorks
+      !itWorks
   }
 
-  def "CPSNonCPSTestScript.cpsMethodCallingNonCpsCallingCps() from CPS Test"(){
+  def 'CPSNonCPSTestScript.cpsMethodCallingNonCpsCallingCps() from CPS Test'() {
 
     when: 'we call method via invokeCPSMethod'
       def itWorks = invokeCPSMethod(sut, 'cpsMethodCallingNonCpsCallingCps')
@@ -79,6 +78,6 @@ class CPSNonCPSTestScriptSpec extends CPSSpecification{
       thrown IllegalStateException
 
     and: 'it does not work'
-      ! itWorks
+      !itWorks
   }
 }
