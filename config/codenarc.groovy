@@ -358,7 +358,7 @@ ruleset {
     LoggingSwallowsStacktrace
     MultipleLoggers
     PrintStackTrace
-    Println
+    //Println
     SystemErrPrint
     SystemOutPrint
 
