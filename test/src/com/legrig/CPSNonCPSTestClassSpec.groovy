@@ -2,12 +2,36 @@ package com.legrig
 
 import com.cloudbees.groovy.cps.impl.CpsCallableInvocation
 import spock.lang.PendingFeature
+import spock.lang.Unroll
+import support.cps.CPSUtils
 import support.cps.InvalidCPSInvocation
 import support.jenkins.CPSSpecification
 
 class CPSNonCPSTestClassSpec extends CPSSpecification {
 
   Class testSubjectClass = CPSNonCPSTestClass
+
+  @Unroll
+  def "isCPSTransformed(CPSNonCPSTestClass, #method()) = #expected Test"() {
+
+    given: 'an object that is not Spock wrapped'
+      def object = new CPSNonCPSTestClass()
+
+    when: 'we call the method'
+      def actual = CPSUtils.isCPSTransformed(object, method)
+
+    then: 'it works'
+      actual == expected
+
+    where: 'data is'
+      method                             || expected
+      'nonCpsMethod'                     || false
+      'cpsMethod'                        || true
+      'nonCpsMethodCallingCpsMethod'     || false
+      'nonCpsMethodCallingTwoCpsMethods' || false
+      'cpsMethodCallingNonCpsCallingCps' || true
+      'cpsMethodCallingNonCps'           || true
+  }
 
   def "CPSNonCPSTestClass.nonCpsMethod() Test"() {
 
