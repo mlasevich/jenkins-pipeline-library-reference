@@ -7,6 +7,15 @@ class CPSNonCPSTestClass {
   @NonCPS
   boolean nonCpsMethodCallingCpsMethod() {
     println 'this is a non cps method'
+    cpsMethod(false)
+    return true
+  }
+
+  @NonCPS
+  boolean nonCpsMethodCallingTwoCpsMethods() {
+    println 'this is a non cps method'
+    cpsMethod(false)
+    println 'this is still non cps method, but we will enver get here'
     return cpsMethod()
   }
 
@@ -24,11 +33,13 @@ class CPSNonCPSTestClass {
 
   /**
    * Simple CPS Method
-   * @return
+   *
+   * @param value boolean value to return, default is true
+   * @return boolean value
    */
-  boolean cpsMethod() {
+  boolean cpsMethod(boolean value=true) {
     println 'this is a cps method'
-    return true
+    return value
   }
 
   boolean cpsMethodCallingNonCps() {
